@@ -10,6 +10,7 @@ import PomodoroTimer from './components/PomodoroTimer';
 import SubjectTracker from './components/SubjectTracker';
 import Calendar from './components/Calendar';
 import Settings from './components/Settings';
+import InstallBanner from './components/InstallBanner';
 
 function AppContent() {
   const { currentPage } = useApp();
@@ -71,6 +72,7 @@ function AppContent() {
         </div>
         {renderPage()}
       </main>
+      <InstallBanner />
     </div>
   );
 }
