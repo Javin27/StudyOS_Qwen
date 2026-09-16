@@ -3,53 +3,30 @@
   "productName": "StudyOS",
   "copyright": "Copyright © 2025 StudyOS",
   "directories": {
-    "output": "release",
-    "buildResources": "build"
+    "output": "release"
   },
   "files": [
     "dist/**/*",
     "electron/**/*",
-    "node_modules/**/*",
     "package.json"
   ],
   "win": {
     "target": [
       {
         "target": "nsis",
-        "arch": ["x64", "ia32"]
-      },
-      {
-        "target": "portable",
         "arch": ["x64"]
       }
     ],
-    "icon": "build/icon.ico",
     "artifactName": "${productName}-Setup-${version}-${arch}.${ext}"
   },
   "nsis": {
     "oneClick": false,
-    "perMachine": true,
+    "perMachine": false,
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": false,
     "shortcutName": "StudyOS",
-    "installerIcon": "build/icon.ico",
-    "uninstallerIcon": "build/icon.ico",
-    "installerHeaderIcon": "build/icon.ico",
     "createDesktopShortcut": true,
     "createStartMenuShortcut": true,
     "shortcutFolderName": "StudyOS"
-  },
-  "portable": {
-    "artifactName": "${productName}-Portable-${version}-${arch}.${ext}"
-  },
-  "mac": {
-    "target": ["dmg"],
-    "icon": "build/icon.icns",
-    "category": "public.app-category.education"
-  },
-  "linux": {
-    "target": ["AppImage", "deb"],
-    "icon": "build/icon.png",
-    "category": "Education"
   }
 }
