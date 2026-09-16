@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
+import { useElectron, usePWAInstall } from './hooks/useElectron';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Tasks from './components/Tasks';
@@ -13,6 +14,12 @@ import Settings from './components/Settings';
 function AppContent() {
   const { currentPage } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  // Initialize Electron integration
+  useElectron();
+  
+  // Initialize PWA install prompt
+  usePWAInstall();
 
   React.useEffect(() => {
     const handler = () => setMobileMenuOpen(false);

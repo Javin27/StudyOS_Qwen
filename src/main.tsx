@@ -3,4 +3,21 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+// Register service worker for PWA/offline support
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('StudyOS SW registered:', registration.scope);
+      })
+      .catch((error) => {
+        console.log('StudyOS SW registration failed:', error);
+      });
+  });
+}
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
